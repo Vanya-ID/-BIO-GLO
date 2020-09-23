@@ -23,55 +23,55 @@ const sendForm = () => {
 
       form.addEventListener('submit', (e) => {
          e.preventDefault();
-         form.appendChild(statusMessage);
-         statusMessage.textContent = '';
+         //    form.appendChild(statusMessage);
+         //    statusMessage.textContent = '';
 
 
-         const formData = new FormData(form);
-         let body = {};
-         formData.forEach((value, key) => {
-            body[key] = value;
-         });
-         const success = (request) => {
-            const todelete = Array.from(form.querySelectorAll('.todelete'));
-            todelete.forEach((item) => {
-               item.remove();
-            });
-            if (request.status !== 200) {
-               throw new Error('status network not 200');
-            }
-            statusMessage.textContent = successMessage;
-            const inputForm = form.querySelectorAll('input');
-            inputForm.forEach(elem => {
-               elem.value = '';
-            });
-            const deleteStatusMessage = () => {
-               statusMessage.remove();
-            };
-            setTimeout(deleteStatusMessage, 3000);
-         };
-         const error = () => {
-            statusMessage.textContent = errorMessage;
-            console.error();
-            const deleteStatusMessage = () => {
-               statusMessage.remove();
-            };
-            setTimeout(deleteStatusMessage, 3000);
-         };
-         postData(body)
-            .then(success)
-            .catch(error);
+         //    const formData = new FormData(form);
+         //    let body = {};
+         //    formData.forEach((value, key) => {
+         //       body[key] = value;
+         //    });
+         //    const success = (request) => {
+         //       const todelete = Array.from(form.querySelectorAll('.todelete'));
+         //       todelete.forEach((item) => {
+         //          item.remove();
+         //       });
+         //       if (request.status !== 200) {
+         //          throw new Error('status network not 200');
+         //       }
+         //       statusMessage.textContent = successMessage;
+         //       const inputForm = form.querySelectorAll('input');
+         //       inputForm.forEach(elem => {
+         //          elem.value = '';
+         //       });
+         //       const deleteStatusMessage = () => {
+         //          statusMessage.remove();
+         //       };
+         //       setTimeout(deleteStatusMessage, 3000);
+         //    };
+         //    const error = () => {
+         //       statusMessage.textContent = errorMessage;
+         //       console.error();
+         //       const deleteStatusMessage = () => {
+         //          statusMessage.remove();
+         //       };
+         //       setTimeout(deleteStatusMessage, 3000);
+         //    };
+         //    postData(body)
+         //       .then(success)
+         //       .catch(error);
       });
 
-      const postData = (body) => {
-         return fetch('./server.php', {
-            method: 'POST',
-            headers: {
-               'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-         });
-      };
+      // const postData = (body) => {
+      //    return fetch('./server.php', {
+      //       method: 'POST',
+      //       headers: {
+      //          'Content-Type': 'application/json'
+      //       },
+      //       body: JSON.stringify(body)
+      //    });
+      // };
 
    });
 

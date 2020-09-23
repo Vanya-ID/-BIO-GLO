@@ -2,7 +2,7 @@
 import popupCall from './modules/popupCall';
 import sendForm from './modules/senForm';
 import addSentenceBtn from './modules/addSenteceBtn';
-
+import popupDiscount from './modules/popupDiscount.js';
 // popup-call
 popupCall();
 
@@ -11,3 +11,6 @@ sendForm();
 
 //more
 addSentenceBtn();
+
+//popupDiscount
+popupDiscount();
