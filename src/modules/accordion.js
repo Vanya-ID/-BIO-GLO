@@ -3,6 +3,7 @@ const accordion = () => {
       panelHeading = accordion.querySelectorAll('.panel-heading');
    panelHeading.forEach((elem) => {
       elem.addEventListener('click', (e) => {
+         e.preventDefault();
          let target = e.target;
          target = target.closest('.panel-heading');
          const allPanels = accordion.querySelectorAll('.collapse ');
