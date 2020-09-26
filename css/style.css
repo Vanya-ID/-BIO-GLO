@@ -1535,3 +1535,11 @@ header .logo img {
       transform: scale(1);
    }
 }
+
+.toggleStyle {
+   display: none;
+}
+
+.display {
+   display: block;
+}
