@@ -19,19 +19,22 @@ const accordion = () => {
 
    //questions
    const slideInDown = document.querySelector('.slideInDown'),
-      panelCollapses = slideInDown.querySelectorAll('.panel-collapse'),
-      collapseOneTwo = document.querySelector('#collapseOne-two');
-
-
-   slideInDown.addEventListener('click', (e) => {
-      panelCollapses.forEach((elem) => {
-         elem.classList.remove('in');
+      panelHeadingTwo = slideInDown.querySelectorAll('.panel-heading');
+   panelHeadingTwo.forEach((elem) => {
+      elem.addEventListener('click', (e) => {
+         e.preventDefault();
+         let target = e.target;
+         target = target.closest('.panel-heading');
+         const allPanels = slideInDown.querySelectorAll('.collapse ');
+         allPanels.forEach((elem) => {
+            elem.classList.remove('in');
+         });
+         if (target === elem) {
+            const subling = target.nextElementSibling;
+            subling.classList.add('in');
+         }
       });
-      let target = e.target;
-      if (target.closest('.panel-default')) {
-         target = target.closest('.panel-default');
-         target.lastElementChild.classList.add('in');
-      }
-   });
+   })
+
 };
 export default accordion;
