@@ -3,7 +3,6 @@ const accordion = () => {
       panelHeading = accordion.querySelectorAll('.panel-heading');
    panelHeading.forEach((elem) => {
       elem.addEventListener('click', (e) => {
-         e.preventDefault();
          let target = e.target;
          target = target.closest('.panel-heading');
          const allPanels = accordion.querySelectorAll('.collapse ');
@@ -23,7 +22,6 @@ const accordion = () => {
       panelHeadingTwo = slideInDown.querySelectorAll('.panel-heading');
    panelHeadingTwo.forEach((elem) => {
       elem.addEventListener('click', (e) => {
-         e.preventDefault();
          let target = e.target;
          target = target.closest('.panel-heading');
          const allPanels = slideInDown.querySelectorAll('.collapse ');
@@ -35,7 +33,12 @@ const accordion = () => {
             subling.classList.add('in');
          }
       });
-   })
-
+   });
+   const allA = document.querySelectorAll('a[class="collapsed"]');
+   allA.forEach((elem) => {
+      elem.addEventListener('click', (e) => {
+         e.preventDefault();
+      });
+   });
 };
 export default accordion;
