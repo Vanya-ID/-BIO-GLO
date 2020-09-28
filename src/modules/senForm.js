@@ -21,13 +21,19 @@ const sendForm = () => {
          firstRing = accordion.querySelectorAll('.form-control')[1],
          secondRing = accordion.querySelectorAll('.form-control')[3],
          myonoffswitchTwo = accordion.querySelector('#myonoffswitch-two'),
-         inputText = accordion.querySelector('input[type = "text"]');
+         inputText = accordion.querySelector('input[type = "text"]'),
+         question = document.querySelector('input[name= "user_quest"]');
+
 
       formName.forEach((elem) => {
          elem.addEventListener('input', () => {
             elem.value = elem.value.replace(/[^ а-яё]/ig, '');
          });
       });
+      question.addEventListener('input', () => {
+         question.value = question.value.replace(/[^?!.,:;@ а-яё]/ig, '');
+      });
+
       inputText.addEventListener('input', () => {
          inputText.value = inputText.value.replace(/[^0-9]/ig, '');
 
@@ -72,9 +78,9 @@ const sendForm = () => {
          }
 
          body.distance_to_home = inputText.value;
+         body.question = question.value;
          formData.forEach((value, key) => {
             body[key] = value;
-            console.log(body);
          });
          const success = (request) => {
             const todelete = Array.from(form.querySelectorAll('.todelete'));
