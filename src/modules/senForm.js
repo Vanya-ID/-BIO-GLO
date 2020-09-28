@@ -12,15 +12,30 @@ const sendForm = () => {
 
 
 
-      const formName = form.querySelectorAll('input[name="user_name"]');
+      const formName = form.querySelectorAll('input[name="user_name"]'),
+         accordion = document.querySelector('#accordion'),
+         calcResult = document.querySelector('#calc-result'),
+         onoffswitchCheckbox = accordion.querySelector('.onoffswitch-checkbox'),
+         firstDiametr = accordion.querySelectorAll('.form-control')[0],
+         secondDiametr = accordion.querySelectorAll('.form-control')[2],
+         firstRing = accordion.querySelectorAll('.form-control')[1],
+         secondRing = accordion.querySelectorAll('.form-control')[3],
+         myonoffswitchTwo = accordion.querySelector('#myonoffswitch-two'),
+         inputText = accordion.querySelector('input[type = "text"]');
+
       formName.forEach((elem) => {
          elem.addEventListener('input', () => {
             elem.value = elem.value.replace(/[^ а-яё]/ig, '');
          });
       });
+      inputText.addEventListener('input', () => {
+         inputText.value = inputText.value.replace(/[^0-9]/ig, '');
+
+      });
 
 
       form.addEventListener('submit', (e) => {
+
          e.preventDefault();
          form.appendChild(statusMessage);
          statusMessage.textContent = '';
@@ -33,10 +48,33 @@ const sendForm = () => {
 
          form.insertAdjacentHTML('beforeend', animation);
 
-         const formData = new FormData(form);
+         const formData = new FormData(form, calcResult);
          let body = {};
+
+
+         body.final_cost = calcResult.value;
+         if (onoffswitchCheckbox.checked) {
+            body.camers = 'Однокамерный';
+            body.first_diametr = firstDiametr.value;
+            body.first_ring = firstRing.value;
+         } else {
+            body.camers = 'Двухкамерный';
+            body.first_diametr = firstDiametr.value;
+            body.first_ring = firstRing.value;
+            body.second_diametr = secondDiametr.value;
+            body.second_ring = secondRing.value;
+         }
+
+         if (myonoffswitchTwo.checked) {
+            body.botton = 'Есть днище';
+         } else {
+            body.botton = 'Нет днища';
+         }
+
+         body.distance_to_home = inputText.value;
          formData.forEach((value, key) => {
             body[key] = value;
+            console.log(body);
          });
          const success = (request) => {
             const todelete = Array.from(form.querySelectorAll('.todelete'));

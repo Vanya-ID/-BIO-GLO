@@ -6,6 +6,7 @@ import popupDiscount from './modules/popupDiscount.js';
 import gaugingButton from './modules/gaugingButton';
 import calcAcordeon from './modules/calcAcordeon';
 import accordion from './modules/accordion';
+import popupConsultation from './modules/popupConsultation';
 // popup-call
 popupCall();
 
@@ -26,3 +27,6 @@ calcAcordeon();
 
 //accordion
 accordion();
+
+//popupConsultation
+popupConsultation();

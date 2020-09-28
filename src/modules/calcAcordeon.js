@@ -24,8 +24,7 @@ const calcAcordeon = () => {
 
    const input = document.querySelector('.onoffswitch-checkbox'),
       selectBox = document.querySelectorAll('.title-text')[1],
-      calcResult = document.querySelector('#calc-result'),
-      panelGroup = document.querySelector('.panel-group');
+      calcResult = document.querySelector('#calc-result');
 
 
    selectBox.style.display = 'none';
@@ -37,7 +36,9 @@ const calcAcordeon = () => {
       circleExpand = document.querySelectorAll('.expand')[1],
       bottom = document.querySelector('#myonoffswitch-two'),
       secondExpand = document.querySelectorAll('.expand')[2],
-      secondCircleExpand = document.querySelectorAll('.expand')[3];
+      secondCircleExpand = document.querySelectorAll('.expand')[3],
+      popupDiscount = document.querySelector('.popup-discount');
+
 
    const countSum = (price) => {
       let d = 0,
@@ -51,6 +52,7 @@ const calcAcordeon = () => {
          circleValue = +circleExpand.options[circleExpand.selectedIndex].value.substr(0, 1),
          secondTypeValue = +secondExpand.options[secondExpand.selectedIndex].value.substr(0, 1),
          secondCircleValue = +secondCircleExpand.options[secondCircleExpand.selectedIndex].value.substr(0, 1);
+
 
       if (!input.checked) {
          secondPrice = 5000;
@@ -97,7 +99,7 @@ const calcAcordeon = () => {
    const callBtn = document.querySelectorAll('.call-btn')[1];
    callBtn.addEventListener('click', () => {
       countSum(10000);
-
+      popupDiscount.style.display = 'block';
    });
 
    input.addEventListener('click', () => {
@@ -111,5 +113,8 @@ const calcAcordeon = () => {
          selectBox.nextElementSibling.nextElementSibling.style.display = 'none';
       }
    });
+
+
+
 };
 export default calcAcordeon;
