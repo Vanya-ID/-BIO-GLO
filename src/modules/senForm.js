@@ -54,31 +54,36 @@ const sendForm = () => {
 
          form.insertAdjacentHTML('beforeend', animation);
 
-         const formData = new FormData(form, calcResult);
+         const formData = new FormData(form, calcResult),
+            calcForm = document.querySelectorAll('.capture-form')[2],
+            questionForm = document.querySelectorAll('.capture-form')[4];
+
          let body = {};
-
-
-         body.final_cost = calcResult.value;
-         if (onoffswitchCheckbox.checked) {
-            body.camers = 'Однокамерный';
-            body.first_diametr = firstDiametr.value;
-            body.first_ring = firstRing.value;
-         } else {
-            body.camers = 'Двухкамерный';
-            body.first_diametr = firstDiametr.value;
-            body.first_ring = firstRing.value;
-            body.second_diametr = secondDiametr.value;
-            body.second_ring = secondRing.value;
+         if (form === questionForm) {
+            body.question = question.value;
+         }
+         if (form === calcForm) {
+            body.final_cost = calcResult.value;
+            if (onoffswitchCheckbox.checked) {
+               body.camers = 'Однокамерный';
+               body.first_diametr = firstDiametr.value;
+               body.first_ring = firstRing.value;
+            } else {
+               body.camers = 'Двухкамерный';
+               body.first_diametr = firstDiametr.value;
+               body.first_ring = firstRing.value;
+               body.second_diametr = secondDiametr.value;
+               body.second_ring = secondRing.value;
+            }
+            if (myonoffswitchTwo.checked) {
+               body.botton = 'Есть днище';
+            } else {
+               body.botton = 'Нет днища';
+            }
+            body.distance_to_home = inputText.value;
          }
 
-         if (myonoffswitchTwo.checked) {
-            body.botton = 'Есть днище';
-         } else {
-            body.botton = 'Нет днища';
-         }
 
-         body.distance_to_home = inputText.value;
-         body.question = question.value;
          formData.forEach((value, key) => {
             body[key] = value;
          });

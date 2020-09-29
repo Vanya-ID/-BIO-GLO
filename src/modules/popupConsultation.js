@@ -8,6 +8,7 @@ const popupConsultation = () => {
    });
 
    popupConsultation.addEventListener('click', (e) => {
+      const question = document.querySelector('input[name="user_quest"]');
       let target = e.target;
       if (target.classList.contains('popup-close')) {
          popupConsultation.style.display = 'none';
@@ -15,6 +16,7 @@ const popupConsultation = () => {
             item.removeAttribute('required');
             item.value = '';
          });
+         question.value = '';
       } else {
          target = target.closest('.popup-content');
          if (!target) {
@@ -22,6 +24,7 @@ const popupConsultation = () => {
             input.forEach((item) => {
                item.value = '';
             });
+            question.value = '';
          }
       }
    });

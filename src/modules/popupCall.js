@@ -1,5 +1,4 @@
 const popupCall = () => {
-
    const callBtn = Array.from(document.querySelectorAll('a[class = "call-btn"]')),
       popupCall = document.querySelector('.popup-call'),
       input = popupCall.querySelectorAll('input');
